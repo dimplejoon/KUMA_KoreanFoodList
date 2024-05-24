@@ -1,7 +1,9 @@
 package com.joon.mushroom_contents
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         items.add(
             ContentsModel(
-                "https://www.google.co.kr/maps/place/%EC%96%91%ED%8F%89+%ED%95%B4%EC%9E%A5%EA%B5%AD/@35.700941,139.7060552,17z/data=!3m1!5s0x60188d26d78e41b9:0x34ee5a2dd7c92e00!4m15!1m8!3m7!1s0x60188d047e44859d:0xd1a8146191f02018!2z7JaR7Y-JIO2VtOyepeq1rQ!8m2!3d35.7009486!4d139.7060038!10e5!16s%2Fg%2F11rqspjvl2!3m5!1s0x60188d047e44859d:0xd1a8146191f02018!8m2!3d35.7009486!4d139.7060038!16s%2Fg%2F11rqspjvl2?hl=ko&entry=ttu",
+                "https://www.google.com/maps/place/%E3%83%A4%E3%83%B3%E3%83%94%E3%83%A7%E3%83%B3+%E3%83%98%E3%82%B8%E3%83%A3%E3%83%B3%E3%82%AF/@35.7009486,139.7014977,17z/data=!3m1!5s0x60188d26d78e41b9:0x34ee5a2dd7c92e00!4m10!1m2!2m1!1z44Ok44Oz44OU44On44Oz44OY44K444Oj44Oz44Kv!3m6!1s0x60188d047e44859d:0xd1a8146191f02018!8m2!3d35.7009486!4d139.7060038!15sCh7jg6Tjg7Pjg5Tjg6fjg7Pjg5jjgrjjg6Pjg7Pjgq9aIiIg44Ok44Oz44OU44On44OzIOODmCDjgrjjg6Pjg7Pjgq-SARFrb3JlYW5fcmVzdGF1cmFudOABAA!16s%2Fg%2F11rqspjvl2?entry=ttu",
                 "https://lh5.googleusercontent.com/p/AF1QipPTpSJyHS1Q3dbBKPf1_LxplVWyKJbbBZLRo-yT=w529-h298-k-no",
                 "ヤンピョン ヘジャンク"
             )
@@ -112,6 +114,16 @@ class MainActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.rv)
         val rvAdapter = RVAdapter(baseContext, items)
         recyclerView.adapter = rvAdapter
+
+        rvAdapter.itemClick = object : RVAdapter.ItemClick {
+            override fun onClick(view: View, position: Int) {
+
+                val intent = Intent(baseContext, ViewActivity::class.java)
+                intent.putExtra("url", items[position].url)
+                startActivity(intent)
+
+            }
+        }
 
         /**
          *  Study Memo

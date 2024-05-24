@@ -1,5 +1,6 @@
 package com.joon.mushroom_contents
 
+import android.content.ClipData.Item
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -18,8 +19,21 @@ class RVAdapter(val context : Context, val List : MutableList<ContentsModel>) : 
 
         return ViewHolder(v)
     }
+
+    interface ItemClick
+    {
+        fun onClick(view: View, position: Int)
+    }
+    var itemClick : ItemClick? = null
+
     // ViewHolderへDataをBindingする、Itemが選択された時に特定のpositionのitemを探して見せる
     override fun onBindViewHolder(holder: RVAdapter.ViewHolder, position: Int) {
+
+        if(itemClick != null){
+            holder?.itemView?.setOnClickListener{ v->
+                itemClick!!.onClick(v, position)
+            }
+        }
         holder.bindItems(List[position])
     }
 
