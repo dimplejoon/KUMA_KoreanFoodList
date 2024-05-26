@@ -3,7 +3,7 @@ package com.joon.mushroom_contents
 data class ContentsModel (
 
     val url : String = "",
-    val ImageUrl : String = "",
+    val imageUrl : String = "",
     val titleText : String = ""
 
     )

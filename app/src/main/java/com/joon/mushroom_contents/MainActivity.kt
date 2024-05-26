@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,11 +19,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val bookmarkButton = findViewById<TextView>(R.id.bookmarkBtn)
+        bookmarkButton.setOnClickListener {
+
+            val intent = Intent(this, BookmarkActivity::class.java)
+            startActivity(intent)
+
+        }
+
         items.add(
             ContentsModel(
                 "https://www.google.com/maps/place/%E3%83%A4%E3%83%B3%E3%83%94%E3%83%A7%E3%83%B3+%E3%83%98%E3%82%B8%E3%83%A3%E3%83%B3%E3%82%AF/@35.7009486,139.7014977,17z/data=!3m1!5s0x60188d26d78e41b9:0x34ee5a2dd7c92e00!4m10!1m2!2m1!1z44Ok44Oz44OU44On44Oz44OY44K444Oj44Oz44Kv!3m6!1s0x60188d047e44859d:0xd1a8146191f02018!8m2!3d35.7009486!4d139.7060038!15sCh7jg6Tjg7Pjg5Tjg6fjg7Pjg5jjgrjjg6Pjg7Pjgq9aIiIg44Ok44Oz44OU44On44OzIOODmCDjgrjjg6Pjg7Pjgq-SARFrb3JlYW5fcmVzdGF1cmFudOABAA!16s%2Fg%2F11rqspjvl2?entry=ttu",
                 "https://lh5.googleusercontent.com/p/AF1QipPTpSJyHS1Q3dbBKPf1_LxplVWyKJbbBZLRo-yT=w529-h298-k-no",
-                "ヤンピョン ヘジャンク"
+                "ヤンピョン へジャングック"
             )
         )
 
@@ -120,6 +129,8 @@ class MainActivity : AppCompatActivity() {
 
                 val intent = Intent(baseContext, ViewActivity::class.java)
                 intent.putExtra("url", items[position].url)
+                intent.putExtra("imageUrl", items[position].imageUrl)
+                intent.putExtra("title", items[position].titleText)
                 startActivity(intent)
 
             }

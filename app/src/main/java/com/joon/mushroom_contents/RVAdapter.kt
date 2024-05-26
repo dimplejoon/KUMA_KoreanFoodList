@@ -52,7 +52,7 @@ class RVAdapter(val context : Context, val List : MutableList<ContentsModel>) : 
 
             // contextとはapplicationの現在状態の脈絡
             Glide.with(context)
-                .load(item.ImageUrl)
+                .load(item.imageUrl)
                 .into(rv_img)
         }
     }
