@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "931605669333",
+    "project_id": "mushroom-project-53229",
+    "storage_bucket": "mushroom-project-53229.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:931605669333:android:c3501d1f80ef3e114a095c",
+        "android_client_info": {
+          "package_name": "com.joon.mushroom_contents"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC99ttrlMSmyYMuJEuObPeR29cT79iYBJ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
